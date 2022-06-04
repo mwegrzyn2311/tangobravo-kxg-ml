@@ -1,0 +1,8 @@
+FACTS:
+
+
+TODO:
+-Dane treningow:
+  Wycropowac i powrzucać do odpowiednich folderow
+-Wytrenować siec na tych danych
+-Uruchomic siec na referencyjnych
