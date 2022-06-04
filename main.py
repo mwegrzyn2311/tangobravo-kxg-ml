@@ -3,8 +3,8 @@ import os
 import cv2
 
 def CropImage():
-    imgFolderPath = "D:/HackatonCrop/reference_images_part1/"
-    outputPath = "D:/HackatonCrop/output/"
+    imgFolderPath = "public_dataset/reference_images_part1/"
+    outputPath = "output/"
     # label json
     f = open('reference_images_part1.json')
 
@@ -33,7 +33,7 @@ def CropImage():
                 os.makedirs(path)
             img_id = int(item["image_id"])
             if img_id in fileNames.keys():
-                img_path = imgFolderPath + fileNames[img_id]
+                img_path = os.path.abspath(imgFolderPath + fileNames[img_id])
                 # print(img_path)
                 img = cv2.imread(img_path)
                 # Bboxes are in [top-left-x, top-left-y, width, height] format
