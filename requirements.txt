@@ -1,3 +1,4 @@
 fiftyone
 tensorflow
-pytorch
+pandas
+matplotlib

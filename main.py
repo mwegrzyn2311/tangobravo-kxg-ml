@@ -50,7 +50,5 @@ def CropImage():
                 print(output_path)
                 cv2.imwrite(output_path, img)
 
-    cv2.destroyAllWindows()
-
 if __name__ == "__main__":
    CropImage()
