@@ -1,5 +1,7 @@
 # Project specific
 public_dataset
+reference_images_part1/
+output/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
