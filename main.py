@@ -1,12 +1,11 @@
 import json
 import os
 import cv2
+import numpy as np
+from matplotlib import pyplot as plt
 
-def CropImage():
-    imgFolderPath = "D:/HackatonCrop/reference_images_part1/"
-    outputPath = "D:/HackatonCrop/output/"
-    # label json
-    f = open('reference_images_part1.json')
+def CropImage(imgFolderPath = "D:/HackatonCrop/reference_images_part1/", outputPath = "D:/HackatonCrop/output/", labelFile = 'reference_images_part1.json'):
+    f = open(labelFile)
 
     data = json.load(f)
     f.close()
@@ -45,12 +44,31 @@ def CropImage():
                 # cv2.imshow("cropped", img)
                 print(img.shape)
                 img = img[y:y + height, x:x + width]
+                print(img.dtype)
                 print(img.shape)
                 output_path = outputPath + categoriesNames[cat_id] + "/" + str(item["id"]) + ".png"
                 print(output_path)
                 cv2.imwrite(output_path, img)
 
-    cv2.destroyAllWindows()
+   # cv2.destroyAllWindows()
+
+def forEachImg(path):
+    subfolders = [ f.path for f in os.scandir(path) if f.is_dir() ]
+    for categoryDir in subfolders:
+        category = os.path.basename(categoryDir)
+        for imagePath in os.listdir(categoryDir):
+            img = cv2.imread(categoryDir + "/" + imagePath)
+            train(category, img)
+
+
+
+def train(category,img):
+    #tu wrzuc swoj kod
+
+    print(category)
+    plt.imshow(cv2.cvtColor(img, cv2.COLOR_BGR2RGB))
+    plt.show()
 
 if __name__ == "__main__":
-   CropImage()
+   #CropImage()
+   forEachImg("D:/HackatonCrop/output/")
